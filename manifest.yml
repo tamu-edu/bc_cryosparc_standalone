@@ -1,0 +1,7 @@
+---
+name: CryoSPARC
+category: Interactive Apps
+subcategory: Imaging
+role: batch_connect
+description: This app will launch [CryoSPARC](https://cryosparc.com) on one compute node.
+contact: Michael Dickens - TAMU HPRC - cmdickens@tamu.edu
