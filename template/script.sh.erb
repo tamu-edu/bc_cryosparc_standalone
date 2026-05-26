@@ -37,9 +37,8 @@ if [ ! -d "$user_cryosparc_directory" ]; then
     mkdir "$user_cryosparc_directory/cryosparc_cache"
     mkdir "$user_cryosparc_directory/cryosparc_database"
     singularity exec $singularity_image tar xzf /cryosparc_master_run_init_files-v<%= context.version %>.tar.gz -C $user_cryosparc_directory
+    echo <%= context.cryosparc_license_id %> > $user_cryosparc_directory/cryosparc_license/license_id
 fi
-
-echo <%= context.cryosparc_license_id %> > $user_cryosparc_directory/cryosparc_license/license_id
 
 ################################################################################
 # TODO this ssdquota section is specific to HPRC, update as needed

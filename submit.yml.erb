@@ -1,8 +1,19 @@
 ---
-<%- if login_email !~ URI::MailTo::EMAIL_REGEXP
+<%- 
+    license_id_file="/scratch/user/#{ENV["USER"]}/.cryosparc-v#{version.rpartition('.')[0..1].join.chop}/cryosparc_license/license_id"
+    if File.exist?(license_id_file)
+        original_license_id=%x( cat #{license_id_file} ).chomp
+
+        if cryosparc_license_id != original_license_id
+            raise "ERROR: License ID provided is not the original one used to create the database!"
+        end
+    end
+
+    if login_email !~ URI::MailTo::EMAIL_REGEXP
         raise "ERROR: email not in correct format!"
     end
 -%>
+
 batch_connect:
   template: "vnc"
 script:
