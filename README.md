@@ -17,9 +17,7 @@ The singularity --fakeroot option is needed if root privileges are unavailable. 
 
 <!-- A screenshot helps deployers verify their installation and helps users understand what they'll get. -->
 <!-- Place images in a screenshots/ or docs/ directory. -->
-![Application running in browser](docs/cryosparc_form.png)
-
-![Application running in browser](docs/cryosparc_login.png)
+![form.yml.erb](docs/cryosparc_form.png) ![CryoSPARC running in web browser](docs/cryosparc_login.png)
 
 ## Features
 
@@ -30,6 +28,7 @@ The singularity --fakeroot option is needed if root privileges are unavailable. 
 - Configurable memory, cores, and wall time via the launch form
 - Containerized via Singularity/Apptainer; build script included
 - Lmod .lua file included for interacting with the CryoSPARC session via command line
+- A database is created for each user using the email field and the first 8 characters of the user's License ID as the password
 
 ## Requirements
 
@@ -183,7 +182,7 @@ You will need to review and update any of the following as needed
    1. Update the http_proxy variable if your compute nodes do not have internet access.
    2. Update the singularity_image= value to the path of the singulairty image.sif file
    3. Update the user_cryosparc_directory variable if your cluster does not use $SCRATCH
-   4. the $TMPDIR is used on the compute node to write the .lock files where are automatically removed when the $TMPDIR is deleted after a job ends
+   4. the $TMPDIR is used on the compute node to write the .lock files which are automatically removed when the $TMPDIR is deleted after a job ends
    5. configure the ssdquota and quotamax variables
 2. In the INSTALL/build_cryosparc4ood.sh script
    1. update nvidia/cuda base image version as needed from https://hub.docker.com/r/nvidia/cuda
